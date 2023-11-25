@@ -40,7 +40,7 @@
         <i class="fa fa-search icon"></i>
         <input
           placeholder="Search"
-          aria-label="search box"
+          aria-label="shopify search box"
           class="input-field"
           type="text"
         />
@@ -54,16 +54,35 @@
         >
           <i class="fa-regular fa-bell"></i>
         </button>
-        <button class="store-name" onclick="popUpp('div.popUp')">
+        <button
+          class="store-name"
+          onclick="popUpp('div.popUp')"
+          aria-label="user profile button"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
           <span class="sm-hidden">Davii Collections</span>
           <p class="dc">DC</p>
         </button>
       </div>
       <div class="profileM">
-        <button onclick="popUpp('div.notification-popUp')">
+        <button
+          onclick="popUpp('div.notification-popUp')"
+          aria-label="Notification button"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
           <i class="fa-regular fa-bell"></i>
         </button>
-        <button class="dc" onclick="popUpp('div.popUp')">DC</button>
+        <button
+          class="dc"
+          onclick="popUpp('div.popUp')"
+          aria-label="User profile button"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          DC
+        </button>
       </div>
       <div class="popUp closed">
         <div class="top-profile">
