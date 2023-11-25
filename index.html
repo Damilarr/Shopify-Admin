@@ -93,10 +93,10 @@
         </button>
       </div>
       <div class="popUp closed" id="profile" aria-hidden="true">
-        <div class="top-profile">
+        <div class="top-profile" aria-label="Profile Name">
           <div class="storeName2">
             <span class="dc">DC</span>
-            <span class="">Davii Collections</span>
+            <span class="" aria-label="Name">Davii Collections</span>
           </div>
           <i class="fa fa-check"></i>
         </div>
@@ -117,25 +117,46 @@
           </svg>
           <span>All Stores</span>
         </a>
-        <div class="ul">
-          <a href="https://admin.shopify.com">Help Center</a>
-          <a href="https://admin.shopify.com">Changelog</a>
-          <a href="https://admin.shopify.com">Community forums</a>
-          <a href="https://admin.shopify.com">Hire a shopify Partner</a>
-          <a href="https://admin.shopify.com">Keyboard shortcuts</a>
+        <div class="ul" aria-label="Account Options">
+          <a href="https://admin.shopify.com" aria-label="visit Help center"
+            >Help Center</a
+          >
+          <a href="https://admin.shopify.com" aria-label="Change log"
+            >Changelog</a
+          >
+          <a
+            href="https://admin.shopify.com"
+            aria-label="Visit community Forums"
+            >Community forums</a
+          >
+          <a
+            href="https://admin.shopify.com"
+            aria-label="Hire a shopify Partner"
+            >Hire a shopify Partner</a
+          >
+          <a href="https://admin.shopify.com" aria-label="Keyboard shortcuts"
+            >Keyboard shortcuts</a
+          >
         </div>
-        <div class="userAuth">
+        <div class="userAuth" aria-label="Profile information">
           <div>
             <h3>David Micheal</h3>
-            <span>davidmicheal@gmail.com</span>
+            <span aria-label="David Micheal's email address"
+              >davidmicheal@gmail.com</span
+            >
           </div>
-          <p>Manage Account</p>
-          <p>Log out</p>
+          <p aria-label="Manage David Micheal's account">Manage Account</p>
+          <p aria-label="Log out of David Micheal's account">Log out</p>
         </div>
       </div>
-      <div class="notification-popUp closed" id="notifs" aria-hidden="true">
+      <div
+        class="notification-popUp closed"
+        id="notifs"
+        aria-hidden="true"
+        role="menu"
+      >
         <div class="top">
-          <span>Alerts</span>
+          <span aria-label="Alerts" role="menuitem">Alerts</span>
           <div>
             <button>
               <svg
@@ -181,14 +202,20 @@
             </button>
           </div>
         </div>
-        <p>Alerts about your store and account will show here</p>
+        <p aria-live="polite" role="menuitem">
+          Alerts about your store and account will show here
+        </p>
       </div>
     </nav>
     <!-- SELECT PLAN -->
     <div class="plan" id="trail">
       <p>Extend your trial for $1/month for 3 months on select plans.</p>
       <div class="plan-btn">
-        <a href="https://shopify.com/pricing">Select a Plan</a>
+        <a
+          href="https://shopify.com/pricing"
+          aria-label="Go to Shopify pricing page to choose a plan"
+          >Select a Plan</a
+        >
         <button
           onclick="dismissTrialCallout('trail',false)"
           aria-label="close trail callout"
@@ -259,13 +286,28 @@
         </button>
       </div>
       <div class="partb">
-        <span id="comp">0/5 completed</span>
-        <progress id="progress" value="0" max="100"></progress>
+        <span id="comp" aria-label="Progress completed: 0 out of 5"
+          >0/5 completed</span
+        >
+        <progress
+          id="progress"
+          value="0"
+          max="100"
+          aria-valuenow="0"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></progress>
       </div>
-      <div class="list" id="list" aria-labelledby="toggle-content" role="menu">
+      <div
+        class="list"
+        id="list"
+        aria-label="Accordion of options for customizing your online store"
+        role="menu"
+        aria-hidden="true"
+      >
         <div class="li-style">
           <div class="li-style-div">
-            <button role="menuitemcheckbox" class="svgDiv">
+            <button role="menuitemcheckbox" aria-checked="false" class="svgDiv">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -303,28 +345,41 @@
               </svg>
             </button>
 
-            <button class="heading" role="menuitem">
+            <button
+              class="heading"
+              role="menu"
+              aria-label="Option 1: Customize your Online Store"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Customize your Online Store
             </button>
           </div>
-          <div class="closed img-box">
+          <div class="closed img-box" aria-hidden="true">
             <div>
-              <p class="text-mid">
+              <p class="text-mid" aria-label="Description of the theme">
                 Choose a theme and add your logo, colors, and images to reflect
                 your brand.
-                <a href="#" role="menuitem" class="focused">Learn more</a>
+                <a
+                  href="#"
+                  role="menuitem"
+                  class="focused"
+                  aria-label="Learn more about theme customization"
+                  >Learn more</a
+                >
               </p>
-              <button>Customize Theme</button>
+              <button aria-label="Customize the theme">Customize Theme</button>
             </div>
             <img
               src="https://crushingit.tech/hackathon-assets/customise-store.png"
               alt="Customize theme"
+              aria-label="Image representing theme customization"
             />
           </div>
         </div>
         <div class="li-style">
           <div class="li-style-div">
-            <button class="svgDiv" role="menuitemcheckbox">
+            <button class="svgDiv" aria-checked="false" role="menuitemcheckbox">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -361,29 +416,46 @@
                 ></path>
               </svg>
             </button>
-            <button class="heading" role="menuitem">
+            <button
+              class="heading"
+              role="menuitem"
+              aria-label="Option 2: Add your First Product"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Add your First Product
             </button>
           </div>
-          <div class="closed img-box">
+          <div class="closed img-box" aria-hidden="true">
             <div>
-              <p class="text-mid">
+              <p
+                class="text-mid"
+                aria-label="Description of the theme customization options"
+              >
                 Write a description, add photos, and set pricing for the
                 products you plan to sell.
 
-                <a href="#" role="menuitem" class="focused">Learn more</a>
+                <a
+                  href="#"
+                  role="menuitem"
+                  class="focused"
+                  aria-label="Learn more about Add product"
+                  >Learn more</a
+                >
               </p>
-              <button>Add Product</button>
+              <button aria-label="Add product">Add Product</button>
+              <button class="no-style">Import product</button>
             </div>
             <img
               src="https://crushingit.tech/hackathon-assets/product.png"
               alt="Add first product"
+              aria-label="Image representing Add product"
             />
           </div>
         </div>
         <div class="li-style">
           <div class="li-style-div">
-            <button class="svgDiv" role="menuitemcheckbox">
+            <button class="svgDiv" aria-checked="false" role="menuitemcheckbox">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -420,26 +492,44 @@
                 ></path>
               </svg>
             </button>
-            <button class="heading" role="menuitem">Add a Custom Domain</button>
+            <button
+              class="heading"
+              role="menuitem"
+              aria-label="Option 3: Add a Custom Domain"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Add a Custom Domain
+            </button>
           </div>
-          <div class="closed img-box">
+          <div class="closed img-box" aria-hidden="true">
             <div>
-              <p class="text-mid">
+              <p
+                class="text-mid"
+                aria-label="Description of the theme customization options"
+              >
                 Your current domain is 222219.myshopify.com but you can add a
                 custom domain to help customers find your online store.
-                <a href="#" role="menuitem" class="focused">Learn more</a>
+                <a
+                  href="#"
+                  role="menuitem"
+                  class="focused"
+                  aria-label="Learn more about add Domain"
+                  >Learn more</a
+                >
               </p>
-              <button>Add Domain</button>
+              <button aria-label="Add Domain">Add Domain</button>
             </div>
             <img
               src="https://crushingit.tech/hackathon-assets/website.png"
               alt="Add Domain"
+              aria-label="Image representing theme customization"
             />
           </div>
         </div>
         <div class="li-style">
           <div class="li-style-div">
-            <button class="svgDiv" role="menuitemcheckbox">
+            <button class="svgDiv" aria-checked="false" role="menuitemcheckbox">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -476,28 +566,44 @@
                 ></path>
               </svg>
             </button>
-            <button class="heading">Name your store</button>
+            <button
+              class="heading"
+              aria-label="Option 4: Name your store"
+              aria-haspopup="true"
+              aria-expanded="false"
+              role="menu"
+            >
+              Name your store
+            </button>
           </div>
-          <div class="closed img-box">
+          <div class="closed img-box" aria-hidden="true">
             <div>
-              <p class="text-mid">
+              <p
+                class="text-mid"
+                aria-label="Description of the theme customization options"
+              >
                 Your temporary store name is currently Davii collections. The
                 store name appears in your admin and your online store.
-                <a href="#" role="menuitemcheckbox" class="focused"
+                <a
+                  href="#"
+                  role="menuitem"
+                  aria-label="Learn more about theme customization"
+                  class="focused"
                   >Learn more</a
                 >
               </p>
-              <button>Name Store</button>
+              <button aria-label="Name Store">Name Store</button>
             </div>
             <img
               src="https://crushingit.tech/hackathon-assets/name-store.png"
               alt="Name your store"
+              aria-label="Image representing theme customization"
             />
           </div>
         </div>
         <div class="li-style">
           <div class="li-style-div">
-            <button class="svgDiv" role="menuitemcheckbox">
+            <button class="svgDiv" aria-checked="false" role="menuitemcheckbox">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -534,23 +640,39 @@
                 ></path>
               </svg>
             </button>
-            <button class="heading" role="menuitem">
+            <button
+              class="heading"
+              role="menu"
+              aria-label="Option 5: Set up a payment Provider"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Set up a payment Provider
             </button>
           </div>
-          <div class="closed img-box">
+          <div class="closed img-box" aria-hidden="true">
             <div>
-              <p class="text-mid">
+              <p
+                class="text-mid"
+                aria-label="Description of the theme customization options"
+              >
                 Choose a payment provider to start accepting payments. You’ll
                 need to create an account with the payment provider and set it
                 up with your Shopify store.
-                <a href="#" class="focused">Learn more</a>
+                <a
+                  href="#"
+                  role="menuitem"
+                  class="focused"
+                  aria-label="Learn more about theme customization"
+                  >Learn more</a
+                >
               </p>
-              <button>Set up Payment</button>
+              <button aria-label="Customize the theme">Set up Payment</button>
             </div>
             <img
               src="https://crushingit.tech/hackathon-assets/payment.png"
               alt="Customize theme"
+              aria-label="Image representing theme customization"
             />
           </div>
         </div>

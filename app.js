@@ -25,8 +25,17 @@ function dismissTrialCallout(id, toShow = false) {
   }, 15);
 }
 function showContent() {
+  const button = document.getElementById("toggle-content");
+  const list = document.getElementById("list");
   dismissTrialCallout("list", isClosed);
   toggleArrow();
+  if (button.getAttribute("aria-expanded") === "false") {
+    button.setAttribute("aria-expanded", true);
+    list.setAttribute("aria-hidden", false);
+  } else {
+    button.setAttribute("aria-expanded", false);
+    list.setAttribute("aria-hidden", true);
+  }
 }
 function toggleArrow() {
   const arrowUp =
@@ -44,20 +53,35 @@ function toggleArrow() {
 }
 
 document.querySelectorAll("div.li-style").forEach((element) => {
-  element.querySelector("button.heading").addEventListener("click", () => {
-    closeOthers();
-    element.classList.add("ashBg");
-    element.querySelector("div.img-box").classList.toggle("closed");
-    element.querySelector("div.img-box").classList.toggle("flex");
-  });
+  element
+    .querySelector("button.heading")
+    .addEventListener("click", (ele, index) => {
+      closeOthers();
+      const isExpanded = ele.target.getAttribute("aria-expanded") === "true";
+      if (isExpanded) {
+        ele.target.setAttribute("aria-expanded", !isExpanded);
+      } else {
+        ele.target.setAttribute("aria-expanded", !isExpanded);
+      }
+      element.classList.add("ashBg");
+      const imgBox = element.querySelector("div.img-box");
+      imgBox.classList.toggle("closed");
+      imgBox.classList.toggle("flex");
+      imgBox.setAttribute("aria-hidden", false);
+    });
 });
 
 function closeOthers() {
+  document.querySelectorAll("button.heading").forEach((button) => {
+    button.setAttribute("aria-expanded", false);
+  });
   document.querySelectorAll("div.li-style").forEach((element) => {
-    if (!element.querySelector("div.img-box").classList.contains("closed")) {
-      element.querySelector("div.img-box").classList.add("closed");
-      element.querySelector("div.img-box").classList.remove("flex");
+    const imgBox = element.querySelector("div.img-box");
+    if (!imgBox.classList.contains("closed")) {
+      imgBox.classList.add("closed");
+      imgBox.classList.remove("flex");
       element.classList.remove("ashBg");
+      imgBox.setAttribute("aria-hidden", true);
     }
   });
 }
@@ -78,12 +102,18 @@ document.querySelectorAll("button.svgDiv").forEach((element, index) => {
           console.log("yes");
           elem.classList.add("hide");
           elem.closest("div.li-style").classList.remove("alreadyChecked");
+          document
+            .querySelectorAll("button.svgDiv")
+            [indexx].setAttribute("aria-checked", false);
           calcCompleted();
           return;
         }
         elem.classList.add("hide");
         const parent = element.closest("div.li-style");
         parent.classList.add("alreadyChecked");
+        document
+          .querySelectorAll("button.svgDiv")
+          [indexx].setAttribute("aria-checked", true);
         const allElements = document.querySelectorAll("div.li-style");
         const elementsArr = Array.from(allElements);
         elementsArr.forEach((element) => {
@@ -132,14 +162,18 @@ document.querySelectorAll("button.svgDiv").forEach((element, index) => {
   });
 });
 function calcCompleted() {
+  const span = document.getElementById("comp");
+  const progress = document.getElementById("progress");
   let clicked = 0;
   document.querySelectorAll("div.li-style").forEach((div) => {
     if (div.classList.contains("alreadyChecked")) {
       clicked++;
     }
   });
-  document.getElementById("comp").innerHTML = `${clicked}/5 completed`;
-  document.getElementById("progress").setAttribute("value", `${clicked * 20}`);
+  span.innerHTML = `${clicked}/5 completed`;
+  span.setAttribute("aria-label", `Progress completed: ${clicked} out of 5`);
+  progress.setAttribute("value", `${clicked * 20}`);
+  progress.setAttribute("aria-valuenow", `${clicked * 20}`);
 }
 
 function popUpp(query, id) {
