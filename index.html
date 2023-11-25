@@ -22,7 +22,7 @@
   <body>
     <!-- top bar -->
     <nav class="topbar" aria-label="Main Navigation">
-      <a href="https://shopify.com" aria-label="Shopify Logo, to home page">
+      <a href="https://shopify.com" aria-label="Home page">
         <img
           src="https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg"
           alt="logo"
@@ -36,7 +36,7 @@
           class="mobile-logo"
         />
       </a>
-      <div class="input-icons">
+      <div class="input-icons" role="search">
         <i class="fa fa-search icon"></i>
         <input
           placeholder="Search"
@@ -47,19 +47,23 @@
       </div>
       <div class="profileD">
         <button
-          onclick="popUpp('div.notification-popUp')"
-          aria-label="Notification button"
+          onclick="popUpp('notifs','notification-btn')"
+          aria-label="Open Notifications"
           aria-haspopup="true"
           aria-expanded="false"
+          aria-controls="notifs"
+          id="notification-btn"
         >
           <i class="fa-regular fa-bell"></i>
         </button>
         <button
           class="store-name"
-          onclick="popUpp('div.popUp')"
-          aria-label="user profile button"
+          onclick="popUpp('profile','profile-btn')"
+          aria-label="Open profile"
           aria-haspopup="true"
           aria-expanded="false"
+          aria-controls="profile"
+          id="profile-btn"
         >
           <span class="sm-hidden">Davii Collections</span>
           <p class="dc">DC</p>
@@ -67,24 +71,28 @@
       </div>
       <div class="profileM">
         <button
-          onclick="popUpp('div.notification-popUp')"
-          aria-label="Notification button"
+          onclick="popUpp('notifs','notification-btn')"
+          aria-label="Open Notifications"
           aria-haspopup="true"
           aria-expanded="false"
+          aria-controls="notifs"
+          id="notification-btn"
         >
           <i class="fa-regular fa-bell"></i>
         </button>
         <button
           class="dc"
-          onclick="popUpp('div.popUp')"
-          aria-label="User profile button"
+          id="profile-btn"
+          onclick="popUpp('profile','profile-btn')"
+          aria-label="Open profile"
           aria-haspopup="true"
           aria-expanded="false"
+          aria-controls="profile"
         >
           DC
         </button>
       </div>
-      <div class="popUp closed">
+      <div class="popUp closed" id="profile" aria-hidden="true">
         <div class="top-profile">
           <div class="storeName2">
             <span class="dc">DC</span>
@@ -125,7 +133,7 @@
           <p>Log out</p>
         </div>
       </div>
-      <div class="notification-popUp closed">
+      <div class="notification-popUp closed" id="notifs" aria-hidden="true">
         <div class="top">
           <span>Alerts</span>
           <div>

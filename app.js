@@ -1,5 +1,6 @@
 let isClosed = true;
 let previous = "";
+let previousId = "";
 function dismissTrialCallout(id, toShow = false) {
   let toClose = document.getElementById(id);
   let opacity = toShow ? 0 : 1;
@@ -141,23 +142,36 @@ function calcCompleted() {
   document.getElementById("progress").setAttribute("value", `${clicked * 20}`);
 }
 
-function popUpp(query) {
+function popUpp(query, id) {
+  const button = document.getElementById(id);
+  const popUp = document.getElementById(query);
+  const isExpanded = button.getAttribute("aria-expanded") === "true";
+  const ishidden = popUp.getAttribute("aria-hidden") === "true";
   if (previous && previous == query) {
-    if (document.querySelector(query).classList.contains("closed")) {
-      document.querySelector(query).classList.replace("closed", "flex");
+    if (document.getElementById(query).classList.contains("closed")) {
+      document.getElementById(query).classList.replace("closed", "flex");
+      popUp.setAttribute("aria-hidden", !ishidden);
+      button.setAttribute("aria-expanded", !isExpanded);
     } else {
-      document.querySelector(query).classList.replace("flex", "closed");
+      document.getElementById(query).classList.replace("flex", "closed");
+      popUp.setAttribute("aria-hidden", !ishidden);
+      button.setAttribute("aria-expanded", !isExpanded);
     }
   } else if (
     previous &&
     previous !== query &&
-    !document.querySelector(previous).classList.contains("closed")
+    !document.getElementById(previous).classList.contains("closed")
   ) {
-    document.querySelector(previous).classList.replace("flex", "closed");
+    document.getElementById(previous).classList.replace("flex", "closed");
+    document.getElementById(previous).setAttribute("aria-hidden", true);
+    document.getElementById(previousId).setAttribute("aria-expanded", false);
     previous = query;
-    popUpp(query);
+    previousId = id;
+    popUpp(query, id);
   } else {
+    console.log("thisss");
     previous = query;
-    popUpp(query);
+    previousId = id;
+    popUpp(query, id);
   }
 }
