@@ -159,6 +159,12 @@ button {
 .mobile-logo {
   display: none;
 }
+a:has(img.mobile-logo) {
+  display: none;
+}
+a:has(img.main-logo) {
+  display: block;
+}
 .profileM {
   display: none;
   justify-content: space-around;
@@ -645,6 +651,12 @@ a.allStore span {
 @media only screen and (max-width: 640px) {
   .mobile-logo {
     display: block;
+  }
+  a:has(img.mobile-logo) {
+    display: block;
+  }
+  a:has(img.main-logo) {
+    display: none;
   }
   .main-logo,
   .plan-btn svg {
