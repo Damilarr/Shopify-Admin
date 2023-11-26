@@ -53,22 +53,20 @@ function toggleArrow() {
 }
 
 document.querySelectorAll("div.li-style").forEach((element) => {
-  element
-    .querySelector("button.heading")
-    .addEventListener("click", (ele, index) => {
-      closeOthers();
-      const isExpanded = ele.target.getAttribute("aria-expanded") === "true";
-      if (isExpanded) {
-        ele.target.setAttribute("aria-expanded", !isExpanded);
-      } else {
-        ele.target.setAttribute("aria-expanded", !isExpanded);
-      }
-      element.classList.add("ashBg");
-      const imgBox = element.querySelector("div.img-box");
-      imgBox.classList.toggle("closed");
-      imgBox.classList.toggle("flex");
-      imgBox.setAttribute("aria-hidden", false);
-    });
+  element.querySelector("button.heading").addEventListener("click", (ele) => {
+    closeOthers();
+    const isExpanded = ele.target.getAttribute("aria-expanded") === "true";
+    if (isExpanded) {
+      ele.target.setAttribute("aria-expanded", !isExpanded);
+    } else {
+      ele.target.setAttribute("aria-expanded", !isExpanded);
+    }
+    element.classList.add("ashBg");
+    const imgBox = element.querySelector("div.img-box");
+    imgBox.classList.toggle("closed");
+    imgBox.classList.toggle("flex");
+    imgBox.setAttribute("aria-hidden", false);
+  });
 });
 
 function closeOthers() {
@@ -91,7 +89,6 @@ document.querySelectorAll("button.svgDiv").forEach((element, index) => {
   element.addEventListener("click", () => {
     indexx = index;
     element.querySelectorAll("svg").forEach((elem) => {
-      console.log(elem);
       if (elem.classList.contains("hide")) {
         elem.classList.remove("hide");
       } else {
@@ -99,7 +96,6 @@ document.querySelectorAll("button.svgDiv").forEach((element, index) => {
           elem.classList.contains("checked") &&
           !elem.classList.contains("hide")
         ) {
-          console.log("yes");
           elem.classList.add("hide");
           elem.closest("div.li-style").classList.remove("alreadyChecked");
           document
@@ -122,7 +118,6 @@ document.querySelectorAll("button.svgDiv").forEach((element, index) => {
           }
         });
         for (let i = index; i < elementsArr.length; i++) {
-          //   console.log(count);
           if (
             count > 1 &&
             indexx !== elementsArr.length - 1 &&
@@ -136,7 +131,6 @@ document.querySelectorAll("button.svgDiv").forEach((element, index) => {
           } else if (count > 1 && indexx == elementsArr.length - 1) {
             indexx = 0;
             i = -1;
-            console.log("gretaer than indexx");
           } else if (
             count == 1 &&
             elementsArr[i].classList.contains("alreadyChecked") &&
