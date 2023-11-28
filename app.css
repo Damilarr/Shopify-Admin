@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
 }
 body {
   margin: 0;
@@ -13,6 +16,7 @@ body {
 button {
   cursor: pointer;
 }
+/* STYLING FOR NAVIGATION BAR */
 .topbar {
   display: flex;
   padding: 35px 18px;
@@ -93,7 +97,7 @@ button {
   background-color: #616161;
 }
 .profileD button:has(i):focus,
-.store-name:focus-visible {
+.store-name:focus {
   background-color: #656266;
   border: 2px solid #005bd3;
   border-radius: 14px;
@@ -162,12 +166,16 @@ a:has(img.mobile-logo) {
 a:has(img.main-logo) {
   display: block;
 }
+
 .profileM {
   display: none;
   justify-content: space-around;
   align-items: center;
   background-color: transparent;
 }
+/* END OF NAVIGATION BAR STYLING */
+
+/* STYLING OF TRIAL CALLOUT BANNER */
 .plan {
   background-color: #1c181d;
   position: relative;
@@ -178,7 +186,7 @@ a:has(img.main-logo) {
   font-size: 13px;
   align-items: center;
   width: 60%;
-  margin: 35px auto 0;
+  margin: 25px auto 0;
   padding: 4px 13px;
   border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -247,18 +255,31 @@ a:focus {
 button:has(svg.mobIcon) {
   display: none;
 }
-.toggleContent:focus {
+/* END OF TRIAL CALLOUT STYLING */
+
+/* START OF SETUP PLAN SECTION  STYLING */
+.toggleContent {
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -ms-transition: all 0.1s;
+  -o-transition: all 0.1s;
+}
+.toggleContent:focus-visible {
   border: 2px solid #005bd3;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+.toggleContent:hover {
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 .setup-plan {
   background-color: white;
@@ -266,7 +287,7 @@ button:has(svg.mobIcon) {
   flex-direction: column;
   width: 60%;
   margin: 10px auto 0;
-  padding: 0 10px 10px 10px;
+  padding: 10px;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -282,25 +303,62 @@ button:has(svg.mobIcon) {
 }
 .part1 {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
   margin-bottom: 10px;
 }
 .part1 button {
-  height: fit-content;
-  width: fit-content;
+  height: 25px;
+  width: 25px;
+}
+.part1 h3 {
+  margin-bottom: 8px;
+  margin-top: 0;
 }
 .part1 svg {
-  width: 25px;
+  width: fit-content;
   cursor: pointer;
+  margin: 0 auto !important;
 }
-.part1 .toggleContent svg {
-  margin-right: 0;
+
+.svgDiv:hover svg.unchecked circle {
+  stroke-dasharray: 0 0;
+  transition: all 2s;
+  -webkit-transition: all 2s;
+  -moz-transition: all 2s;
+  -ms-transition: all 2s;
+  -o-transition: all 2s;
 }
+.rotate {
+  animation: rotate-svg 0.4s linear;
+  -webkit-animation: rotate-svg 0.4s linear;
+}
+@keyframes rotate-svg {
+  from {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+}
+
 .part1 button:has(svg) {
   background-color: transparent;
   outline: none;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: 2px solid transparent;
 }
 .part1 span {
   font-size: 13px;
@@ -352,13 +410,42 @@ progress[value]::-webkit-progress-value {
 .flex {
   display: flex;
 }
+.flexDiv {
+  display: flex;
+  animation: fade-down 1s linear;
+  -webkit-animation: fade-down 0.6s ease-in-out;
+}
+@keyframes fade-down {
+  0% {
+    opacity: 0.5;
+    transform: translateX(40px);
+    -webkit-transform: translateX(40px);
+    -moz-transform: translateX(40px);
+    -ms-transform: translateX(40px);
+    -o-transform: translateX(40px);
+  }
+  50% {
+    transform: translateX(-20px);
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    -ms-transform: translateX(-20px);
+    -o-transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+  }
+}
 .list {
   display: none;
   flex-direction: column;
   margin-top: 30px;
   opacity: 0;
 }
-/* The main green stuff */
 .li-style {
   display: flex;
   flex-direction: column;
@@ -370,18 +457,27 @@ progress[value]::-webkit-progress-value {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
 }
 .ashBg {
   background-color: #f3f3f3;
   padding: 8px 3px;
+  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transform-style: preserve-3d;
 }
-/* the green one that woluld be clicked  */
 .li-style-div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: fit-content;
-  /* background-color: yellow; */
 }
 .li-style-div h3 {
   font-weight: 500;
@@ -410,11 +506,17 @@ progress[value]::-webkit-progress-value {
 }
 .li-style-div button.heading {
   background-color: transparent;
+  color: #303030;
+  font-weight: 500;
   outline: none;
   border: 2px solid transparent;
 }
 .li-style-div button.heading:focus-visible {
   border-color: #005bd3;
+  outline: none;
+}
+.li-style-div button.heading:focus {
+  outline: none;
 }
 .list button.svgDiv:focus-visible {
   border: 2px solid #005bd3;
@@ -424,6 +526,11 @@ progress[value]::-webkit-progress-value {
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
 }
 .img-box {
   justify-content: space-around;
@@ -642,10 +749,34 @@ a.allStore span {
   flex-direction: column;
   padding: 5px 10px;
 }
-
+/* ANIMATION TO SPIN PRECHECKBOX ICON */
+.spin-svg {
+  animation: spin-svg 0.3s linear infinite;
+  -webkit-animation: spin-svg 0.3s linear infinite;
+}
+@keyframes spin-svg {
+  from {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
 @media only screen and (max-width: 640px) {
   .mobile-logo {
     display: block;
+  }
+  .popUp,
+  .notification-popUp {
+    right: 5%;
   }
   a:has(img.mobile-logo) {
     display: block;
@@ -713,6 +844,7 @@ a.allStore span {
     -ms-border-radius: 0;
     -o-border-radius: 0;
   }
+
   button:has(svg.mobIcon) {
     display: block;
     position: absolute;
